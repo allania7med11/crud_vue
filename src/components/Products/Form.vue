@@ -1,13 +1,13 @@
 <template>
   <div class="card">
     <div class="title">Create Product</div>
-    <form>
+    <form @submit="submit">
       <label for="fname">Name:</label>
-      <input type="text" id="fname" name="name" required />
+      <input type="text" v-model="product.name" id="fname" name="name" required />
       <label for="fprice">Price:</label>
-      <input type="number" id="fprice" name="price" required />
+      <input type="number" v-model.number="product.age" id="fprice" name="price" required />
       <label for="fdescription">Decription:</label>
-      <input type="text" id="fdescription" name="description" required />
+      <input type="text" v-model="product.description" id="fdescription" name="description" required />
       <div class="has_submit">
         <button type="submit">Submit</button>
       </div>
@@ -16,7 +16,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      product: {
+        name: null,
+        age: null,
+        description: null,
+      },
+    };
+  },
+  methods:{
+    submit: function(evt){
+      evt.preventDefault()
+      this.$emit("submit",this.product)
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -34,7 +50,7 @@ export default {};
   }
 }
 .card .title {
-  margin-bottom:30px ;
+  margin-bottom: 30px;
   text-align: center;
   font-size: 24px;
 }
