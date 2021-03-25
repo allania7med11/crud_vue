@@ -1,6 +1,9 @@
 <template>
   <div class="products">
-    <button class="btn bg-primary" @click="updateProduct('create', productDefault)">
+    <button
+      class="btn bg-primary"
+      @click="updateProduct('create', productDefault)"
+    >
       <i class="fa fa-plus" aria-hidden="true"></i>
       New product
     </button>
@@ -16,7 +19,6 @@
 </template>
 
 <script>
-
 import Form from "./Form";
 import Table from "./Table";
 import api from "@/apis/product";
@@ -44,7 +46,17 @@ export default {
   methods: {
     async submit(product) {
       try {
-        await api.create(product);
+        switch (this.action) {
+          case "create":
+            await api.create(product)
+            break;
+          case "update":
+            await api.update(product._id,product)
+            break;
+          case "delete":
+            await api.delete(product._id)
+            break;
+        }
         await this.updateProducts();
         this.show = !this.show;
       } catch (err) {
@@ -62,7 +74,7 @@ export default {
     async updateProduct(action, product) {
       this.action = action;
       this.product = product;
-      this.show = !this.show
+      this.show = !this.show;
     },
   },
 };

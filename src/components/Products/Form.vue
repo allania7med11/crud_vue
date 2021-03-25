@@ -51,11 +51,11 @@
       <div @click="$emit('show')" class="close">
         <i class="fa fa-times"></i>
       </div>
-      <form class="text-center text-2xl">
+      <form @submit="submit" class="text-center text-2xl">
         Are you sure you want to delete
         <span class="font-bold">{{ product.name }}</span> product?
         <div class="text-center">
-          <button class="btn bg-danger mt-5 text-xl" type="submit">
+          <button type="submit" class="btn bg-danger mt-5 text-xl" >
             Delete
             <i class="fa fa-trash ml-1"></i>
           </button>

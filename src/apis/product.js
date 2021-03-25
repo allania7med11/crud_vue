@@ -4,10 +4,16 @@ import api from "./api";
 const end_point = 'products';
 
 export default {
-    create(obj) {
-        return api.post(end_point,obj);
+    create(product) {
+        return api.post(end_point,product);
     },
     read(){
         return api.get(end_point);
-    }
+    },
+    update(id,product){
+        return api.patch(`${end_point}/${id}`,product);
+    },
+    delete(id){
+        return api.delete(`${end_point}/${id}`);
+    },
 }
