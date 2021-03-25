@@ -20,13 +20,13 @@
       >
         <button
           @click="$emit('click', 'update', product)"
-          class="btn bg-yellow-500 px-3 py-1"
+          class="btn bg-warning px-3 py-1"
         >
           <i class="fa fa-pencil"></i>
         </button>
         <button
           @click="$emit('click', 'delete', product)"
-          class="btn bg-red-500 px-3 py-1"
+          class="btn bg-danger px-3 py-1"
         >
           <i class="fa fa-trash"></i>
         </button>

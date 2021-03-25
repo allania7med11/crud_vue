@@ -1,7 +1,6 @@
 <template>
   <div class="products">
-    <div class="test">fhgfhgfg</div>
-    <button class="btn bg-blue-500" @click="updateProduct('create', productDefault)">
+    <button class="btn bg-primary" @click="updateProduct('create', productDefault)">
       <i class="fa fa-plus" aria-hidden="true"></i>
       New product
     </button>

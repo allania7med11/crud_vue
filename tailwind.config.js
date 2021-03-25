@@ -1,14 +1,24 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   important: true,
-  purge: { content: ["./public/**/*.html", "./src/**/*.vue"] },
+  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      fontSize: {
-        test: '30px',
-      }
-    }
+      colors: {
+        primary: "#007bff",
+        success: "#28a745",
+        warning: "#ffc107",
+        danger: "#dc3545",
+      },
+      screens: {
+        "2xl": { max: "1535px" },
+        xl: { max: "1279px" },
+        lg: { max: "1023px" },
+        md: { max: "767px" },
+        sm: { max: "639px" },
+        xs: { max: "480px" },
+      },
+    },
   },
   variants: {
     extend: {},
