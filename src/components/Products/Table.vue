@@ -52,6 +52,8 @@ export default {
 
 <style lang="scss" scoped>
 .grid-container {
+  max-width: 95%;
+  margin: auto;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   overflow: hidden;
@@ -65,13 +67,7 @@ export default {
     box-shadow: 0px 8px 8px 0 rgba(0, 0, 0, 0.3);
   }
 }
-.header {
-  background-color: rgb(1, 152, 122);
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  padding: 10px;
-}
+
 .col {
   display: flex;
   flex-direction: column;

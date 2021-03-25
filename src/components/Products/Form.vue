@@ -48,7 +48,9 @@
       </form>
     </div>
     <div class="card" v-else>
-      <div @click="$emit('show')" class="close">X</div>
+      <div @click="$emit('show')" class="close">
+        <i class="fa fa-times"></i>
+      </div>
       <form class="text-center text-2xl">
         Are you sure you want to delete
         <span class="font-bold">{{ product.name }}</span> product?
