@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import "@/assets/css/main.css";
+
 import Form from "./Form";
 import Table from "./Table";
 import api from "@/apis/product";
