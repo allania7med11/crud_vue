@@ -1,14 +1,17 @@
 body{
   font-family: 'Lato', sans-serif;
 }
-button {
+.btn {
   outline: none !important;
   margin: 5px;
   padding: 10px 30px;
-  border-radius: 10px;
+  border-radius: 7px;
   cursor: pointer;
   border: none;
-  background-color: blue;
   color: white;
   font-weight: bold;
+  opacity: 0.8;
+}
+.btn:hover{
+  opacity: 1;
 }

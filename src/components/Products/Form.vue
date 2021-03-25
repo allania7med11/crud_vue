@@ -34,11 +34,11 @@
           required
         />
         <div class="text-center">
-          <button v-if="action == 'create'" type="submit" class="btn primary">
+          <button v-if="action == 'create'" type="submit" class="btn bg-blue-500">
             Create
             <i class="fa fa-plus"></i>
           </button>
-          <button v-else type="submit" class="btn warning">
+          <button v-else type="submit" class="btn bg-yellow-500">
             Update
             <i class="fa fa-pencil"></i>
           </button>
@@ -51,7 +51,7 @@
         Are you sure you want to delete
         <span class="font-bold">{{ product.name }}</span> product?
         <div class="text-center">
-          <button class="danger" type="submit">
+          <button class="btn bg-red-500" type="submit">
             Delete
             <i class="fa fa-trash"></i>
           </button>

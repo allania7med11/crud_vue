@@ -18,14 +18,18 @@
         class="item"
         :key="'action' + idPr"
       >
-        <i
+        <button
           @click="$emit('click', 'update', product)"
-          class="fa fa-pencil icon warning"
-        ></i>
-        <i
+          class="btn bg-yellow-500 px-3 py-1"
+        >
+          <i class="fa fa-pencil"></i>
+        </button>
+        <button
           @click="$emit('click', 'delete', product)"
-          class="fa fa-trash icon danger"
-        ></i>
+          class="btn bg-red-500 px-3 py-1"
+        >
+          <i class="fa fa-trash"></i>
+        </button>
       </div>
     </template>
   </div>
@@ -89,5 +93,4 @@ export default {
   color: white;
   border-radius: 4px;
 }
-
 </style>
