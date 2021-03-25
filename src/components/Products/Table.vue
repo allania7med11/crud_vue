@@ -4,13 +4,22 @@
       {{ field.label }}
     </div>
     <div class="header">Actions</div>
-    <template v-for="(product, id) in products">
-      <div v-for="(field, id) in fields" :key="field.value + id" class="item">
+    <template v-for="(product, idPr) in products">
+      <div
+        v-for="field in fields"
+        :key="field.value + idPr"
+        :class="`rg_${Number(idPr) % 2}`"
+        class="item col"
+      >
         {{ product[field.value] }}
       </div>
-      <div class="item" :key="'action' + id">
-        <i class="icon-pencil icon warning" title="edit"></i>
-        <i class="icon-trash-empty icon danger" title="delete"></i>
+      <div
+        :class="`rg_${Number(idPr) % 2}`"
+        class="item"
+        :key="'action' + idPr"
+      >
+        <i class="fa fa-pencil icon warning"></i>
+        <i class="fa fa-trash icon danger"></i>
       </div>
     </template>
   </div>
@@ -37,6 +46,8 @@ export default {
   border-top-right-radius: 10px;
   overflow: hidden;
   display: grid;
+  align-items: stretch;
+  align-content: center;
   grid-template-columns: auto auto auto auto;
   background-color: white;
   box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.3);
@@ -51,21 +62,31 @@ export default {
   font-size: 20px;
   padding: 10px;
 }
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .item {
   padding: 10px;
   color: rgb(107, 99, 110);
+  font-size: 18px;
 }
-.icon{
+.rg_1 {
+  background-color: #f8f8ff;
+  color: #01987a;
+}
+.icon {
   cursor: pointer;
-  padding: 5px;
-  margin: 4px;
+  padding: 7px;
+  margin: 5px;
   color: white;
-  border-radius:4px ;
+  border-radius: 4px;
 }
-.warning{
-  background-color:#ffc107 ;
+.warning {
+  background-color: #ffc107;
 }
-.danger{
+.danger {
   background-color: #dc3545;
 }
 </style>

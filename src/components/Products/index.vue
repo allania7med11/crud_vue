@@ -1,15 +1,15 @@
 <template>
   <div class="products">
-    <i class="icon-pencil"></i>
-    <i class="icon-trash-empty"></i>
-    <button @click="show = !show">New product</button>
+    <button @click="show = !show">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      New product
+    </button>
     <Form :show="show" @show="show = !show" @submit="submit" />
     <Table :products="products" />
   </div>
 </template>
 
 <script>
-import "@/assets/css/fontello.css";
 import "@/assets/css/main.css";
 import Form from "./Form";
 import Table from "./Table";
@@ -33,7 +33,7 @@ export default {
       try {
         await api.create(product);
         await this.updateProducts();
-        this.show = !this.show
+        this.show = !this.show;
       } catch (err) {
         console.log({ err });
       }
@@ -58,5 +58,6 @@ export default {
 .products > button {
   margin-top: 20px;
   margin-bottom: 20px;
+  font-size: 18px;
 }
 </style>
