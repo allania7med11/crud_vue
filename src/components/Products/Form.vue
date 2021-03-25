@@ -6,7 +6,9 @@
     :style="{ display: show ? 'block' : 'none' }"
   >
     <div v-if="action !== 'delete'" class="card">
-      <div @click="$emit('show')" class="close">X</div>
+      <div @click="$emit('show')" class="close">
+        <i class="fa fa-times"></i>
+      </div>
       <form @submit="submit">
         <div class="title">{{ title }}</div>
         <label for="fname">Name:</label>
@@ -36,24 +38,24 @@
         <div class="text-center">
           <button v-if="action == 'create'" type="submit" class="btn bg-blue-500">
             Create
-            <i class="fa fa-plus"></i>
+            <i class="fa fa-plus ml-1"></i>
           </button>
           <button v-else type="submit" class="btn bg-yellow-500">
             Update
-            <i class="fa fa-pencil"></i>
+            <i class="fa fa-pencil ml-1"></i>
           </button>
         </div>
       </form>
     </div>
     <div class="card" v-else>
       <div @click="$emit('show')" class="close">X</div>
-      <form class="text-center">
+      <form class="text-center text-2xl">
         Are you sure you want to delete
         <span class="font-bold">{{ product.name }}</span> product?
         <div class="text-center">
-          <button class="btn bg-red-500" type="submit">
+          <button class="btn bg-red-500 mt-5 text-xl" type="submit">
             Delete
-            <i class="fa fa-trash"></i>
+            <i class="fa fa-trash ml-1"></i>
           </button>
         </div>
       </form>
@@ -115,6 +117,7 @@ export default {
   margin-bottom: 30px;
   text-align: center;
   font-size: 24px;
+  font-weight: bold;
 }
 .card input {
   width: 100%;
@@ -132,6 +135,7 @@ export default {
   }
 }
 .card .close {
+  font-size: 1.5rem;
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -140,7 +144,7 @@ export default {
   padding: 5px;
   color: gainsboro;
   &:hover {
-    color: #000;
+    color: grey;
   }
 }
 </style>
