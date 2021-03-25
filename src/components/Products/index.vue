@@ -1,11 +1,17 @@
 <template>
   <div class="products">
-    <button @click="show = !show">
+    <button @click="updateProduct('create', productDefault)">
       <i class="fa fa-plus" aria-hidden="true"></i>
       New product
     </button>
-    <Form :show="show" @show="show = !show" @submit="submit" />
-    <Table :products="products" />
+    <Form
+      :show="show"
+      :action="action"
+      :product="product"
+      @show="show = !show"
+      @submit="submit"
+    />
+    <Table :products="products" @click="updateProduct" />
   </div>
 </template>
 
@@ -23,6 +29,13 @@ export default {
     return {
       show: false,
       products: [],
+      productDefault: {
+        name: null,
+        price: null,
+        description: null,
+      },
+      product: {},
+      action: "create",
     };
   },
   async created() {
@@ -45,6 +58,11 @@ export default {
       } catch (err) {
         console.log({ err });
       }
+    },
+    async updateProduct(action, product) {
+      this.action = action;
+      this.product = product;
+      this.show = !this.show
     },
   },
 };

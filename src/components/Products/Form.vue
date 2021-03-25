@@ -5,11 +5,10 @@
     @click="updateShow"
     :style="{ display: show ? 'block' : 'none' }"
   >
-    <div class="shadow"></div>
-    <div class="card">
+    <div v-if="action !== 'delete'" class="card">
       <div @click="$emit('show')" class="close">X</div>
-      <div class="title">Create Product</div>
       <form @submit="submit">
+        <div class="title">{{ title }}</div>
         <label for="fname">Name:</label>
         <input
           type="text"
@@ -34,8 +33,28 @@
           name="description"
           required
         />
-        <div class="has_submit">
-          <button type="submit">Submit</button>
+        <div class="text-center">
+          <button v-if="action == 'create'" type="submit" class="btn primary">
+            Create
+            <i class="fa fa-plus"></i>
+          </button>
+          <button v-else type="submit" class="btn warning">
+            Update
+            <i class="fa fa-pencil"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="card" v-else>
+      <div @click="$emit('show')" class="close">X</div>
+      <form class="text-center">
+        Are you sure you want to delete
+        <span class="font-bold">{{ product.name }}</span> product?
+        <div class="text-center">
+          <button class="danger" type="submit">
+            Delete
+            <i class="fa fa-trash"></i>
+          </button>
         </div>
       </form>
     </div>
@@ -44,15 +63,11 @@
 
 <script>
 export default {
-  props: ["show"],
-  data() {
-    return {
-      product: {
-        name: null,
-        price: null,
-        description: null,
-      },
-    };
+  props: ["show", "action", "product"],
+  computed: {
+    title() {
+      return this.action == "create" ? "Create new product" : "Update product";
+    },
   },
   methods: {
     submit: function(evt) {
@@ -61,7 +76,7 @@ export default {
     },
     updateShow(evt) {
       if (evt.target == this.$refs.modal) {
-        this.$emit("show")
+        this.$emit("show");
       }
     },
   },
@@ -87,9 +102,7 @@ export default {
   z-index: 2;
   margin: auto;
   background-color: white;
-  width: 70%;
   max-width: 800px;
-  min-height: 300px;
   padding: 30px 20px;
   border-radius: 5px;
   box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.3);
@@ -118,22 +131,16 @@ export default {
     box-shadow: 0 0 1px blue;
   }
 }
-.card .close{
+.card .close {
   cursor: pointer;
   position: absolute;
-  top:0;
+  top: 0;
   right: 0;
   margin: 5px 10px;
   padding: 5px;
-  color:gainsboro;
-  &:hover{
+  color: gainsboro;
+  &:hover {
     color: #000;
   }
-}
-.has_submit {
-  text-align: center;
-}
-.has_submit button{
-  background-color: green;
 }
 </style>

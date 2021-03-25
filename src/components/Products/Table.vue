@@ -18,8 +18,14 @@
         class="item"
         :key="'action' + idPr"
       >
-        <i class="fa fa-pencil icon warning"></i>
-        <i class="fa fa-trash icon danger"></i>
+        <i
+          @click="$emit('click', 'update', product)"
+          class="fa fa-pencil icon warning"
+        ></i>
+        <i
+          @click="$emit('click', 'delete', product)"
+          class="fa fa-trash icon danger"
+        ></i>
       </div>
     </template>
   </div>
@@ -83,10 +89,5 @@ export default {
   color: white;
   border-radius: 4px;
 }
-.warning {
-  background-color: #ffc107;
-}
-.danger {
-  background-color: #dc3545;
-}
+
 </style>
