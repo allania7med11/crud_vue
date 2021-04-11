@@ -3,7 +3,6 @@
     class="modal"
     ref="modal"
     @click="updateShow"
-    :style="{ display: show ? 'block' : 'none' }"
   >
     <div v-if="action !== 'delete'" class="card">
       <div @click="$emit('show')" class="close">
@@ -67,7 +66,7 @@
 
 <script>
 export default {
-  props: ["show", "action", "product"],
+  props: ["action", "product"],
   computed: {
     title() {
       return this.action == "create" ? "Create new product" : "Update product";

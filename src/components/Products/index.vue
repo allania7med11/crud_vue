@@ -8,7 +8,7 @@
       New product
     </button>
     <Form
-      :show="show"
+      v-if="show"
       :action="action"
       :product="product"
       @show="show = !show"
@@ -48,17 +48,17 @@ export default {
       try {
         switch (this.action) {
           case "create":
-            await api.create(product)
+            await api.create(product);
             break;
           case "update":
-            await api.update(product._id,product)
+            await api.update(product._id, product);
             break;
           case "delete":
-            await api.delete(product._id)
+            await api.delete(product._id);
             break;
         }
         await this.updateProducts();
-        this.show = !this.show;
+        this.show = false;
       } catch (err) {
         console.log({ err });
       }
